@@ -1,9 +1,8 @@
 import os
 import plotly.express as px
 import pandas as pd
-from datetime import date, timedelta, datetime
-from dash import Dash, html, dcc
-from dash import html, dcc, Input, Output
+from datetime import timedelta, datetime
+from dash import Dash, html, dcc, Input, Output
 import dash_bootstrap_components as dbc
 
 import warnings
@@ -11,7 +10,7 @@ warnings.simplefilter(action='ignore', category=FutureWarning)
 
 from styles.styles import colors, TITLE_STYLE, DROPDOWN_STYLE, CONTENT_STYLE
 
-# Change directory to workshop folder path
+# Change directory to local workshop folder path
 workshop_folder_path = '/Users/jf3375/PycharmProjects/Dash_Plotly_Workshop'
 os.chdir(os.path.join(workshop_folder_path, 'data'))
 
@@ -27,6 +26,8 @@ type_allocs_rts = process_date_column(pd.read_csv('daily_type-allocs_rts_type_al
 date_values_rts = pd.date_range(start='2020-01-01', end='2020-12-29')
 date_values_rts = [str(i)[:10] for i in date_values_rts]
 
+# Build Dashboard
+# See the looks of themes: https://bootswatch.com/spacelab/
 app = Dash(external_stylesheets=[dbc.themes.SPACELAB])
 app.title = 'singlepagedashboard'
 
@@ -35,7 +36,7 @@ app.layout = html.Div(children=[
     dbc.Row(
         dbc.Col(html.H3(children='Reliability Cost Index Visualization',
                         style=TITLE_STYLE))
-        , justify='start', align='start'),
+    ),
 
     dbc.Row(
         dbc.Col([
@@ -49,13 +50,17 @@ app.layout = html.Div(children=[
 
     html.Wbr(),
 
-    html.H3('Plot of the Day Selected'),
+    dbc.Row(
+        dbc.Col(html.H3('Plot of the Day Selected'))
+    ),
 
-    dcc.Graph(
-        id='fig_type_allocs_day'
+    dbc.Row(
+        dcc.Graph(id='fig_type_allocs_day')
     )
 
-], style=CONTENT_STYLE)
+], style= {"margin-left": "2rem",
+    "margin-right": "2rem",
+    "margin-top": "2rem"})
 
 
 @app.callback(
@@ -64,7 +69,7 @@ app.layout = html.Div(children=[
 )
 def plot_fig_type_allocs_of_day(day):
     input_start_date = datetime(int(day[0:4]), int(day[5:7]), int(day[8:10]))  # By default 0 hour 0 minutes
-    input_start_date_verbal = input_start_date.strftime("%b %d, %Y").split(',')[0]
+    input_start_date_verbal = input_start_date.strftime("%b %d, %Y")
 
     # Create 24 hours interval on the input_date
     daterange_rts = pd.date_range(input_start_date, input_start_date + timedelta(hours=23), freq='H')
@@ -74,8 +79,8 @@ def plot_fig_type_allocs_of_day(day):
                                   hover_data={"time": "|Hour %H, %b %d"})
 
     fig_type_allocs_day.update_layout(
-        # title='Hourly Time Series of {} Asset Type Reliability Cost Index, updated on {}'.format(version, todaydate_verbal),
-        xaxis_title='Date',
+        title='Hourly Time Series of Asset Type Reliability Cost Index on {}'.format(input_start_date_verbal),
+        xaxis_title='Time',
         yaxis_title='Reliability Cost Index ($)',
         legend_title='Asset Type',
         font_family='sans-serif', font_color=colors['text_1'],

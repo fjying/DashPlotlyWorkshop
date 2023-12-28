@@ -13,7 +13,7 @@ def generate_table(dataframe, max_rows=10):
         ),
         html.Tbody([
             html.Tr([
-                html.Td(dataframe.iloc[i][col]) for col in dataframe.columns
+                html.Td(dataframe.iloc[i, col]) for col in dataframe.columns
             ]) for i in range(min(len(dataframe), max_rows))
         ])
     ])

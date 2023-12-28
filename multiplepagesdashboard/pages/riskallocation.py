@@ -1,8 +1,7 @@
 import os
 import plotly.express as px
 import pandas as pd
-from datetime import date, timedelta, datetime
-from dash import Dash, html, dcc
+from datetime import timedelta, datetime
 from dash import html, dcc, Input, Output
 import dash_bootstrap_components as dbc
 
@@ -28,6 +27,7 @@ type_allocs_rts = process_date_column(pd.read_csv('daily_type-allocs_rts_type_al
 date_values_rts = pd.date_range(start='2020-01-01', end='2020-12-29')
 date_values_rts = [str(i)[:10] for i in date_values_rts]
 
+# Exactly same as single page dashboard, except for we pass it to variable instead of directly to app.layout
 html_div_risk_allocation = html.Div(children=[
 
     dbc.Row(

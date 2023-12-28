@@ -9,25 +9,28 @@ from pages.riskallocation import html_div_risk_allocation
 
 sidebar = html.Div(
     [
-        html.H2("DASH", className="display-4"),
+        html.H2("DASH"),
         html.Hr(),
         dbc.Nav(
             [
-                dbc.NavLink("Home", href="/", active="exact"),
+                dbc.NavLink("Home", href="/", active="exact"), # There would be the blue highlight bar when the link is active
                 dbc.NavLink("Risk Allocation", href="/riskallocation", active="exact")
             ],
             vertical=True,
-            pills=True,
+            pills=True, # Allow the active higlight bar
         ),
     ],
-    style=SIDEBAR_STYLE,
+    style=SIDEBAR_STYLE
 )
 
 content = html.Div(id="page-content", style=CONTENT_STYLE)
 
 app.layout = html.Div([dcc.Location(id="url"), sidebar, content])
 
-@app.callback(Output("page-content", "children"), [Input("url", "pathname")])
+@app.callback(
+    Output("page-content", "children"),
+    Input("url", "pathname")
+)
 def render_page_content(pathname):
     if pathname == "/":
         return html_div_home_page

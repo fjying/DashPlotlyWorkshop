@@ -11,15 +11,6 @@ html_div_home_page = html.Div(
         html.Wbr(),
 
         dbc.Row([
-            dbc.Col(html.P("Sample Home Page")),
-        ], justify='start', align = 'center'),
-        dbc.Row([
-            dbc.Col(html.P("COL1")),
-            dbc.Col(html.P("COL2"))
-        ], justify='start', align='center'),
-        dbc.Row([
-            dbc.Col(html.P("COL3")),
-            dbc.Col(html.P("COL4"))
-        ], justify='start', align='center')
-    ]
-)
+            dbc.Col(html.P("Sample Home Page"))
+        ])
+])

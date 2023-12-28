@@ -16,7 +16,6 @@ app.layout = html.Div([
     dcc.Slider(
         df['year'].min(),
         df['year'].max(),
-        step=None,
         value=df['year'].min(),
         marks={str(year): str(year) for year in df['year'].unique()},
         id='year-slider'
