@@ -1,0 +1,7 @@
+LICENSE
+README.md
+setup.py
+dashplotlyworkshop.egg-info/PKG-INFO
+dashplotlyworkshop.egg-info/SOURCES.txt
+dashplotlyworkshop.egg-info/dependency_links.txt
+dashplotlyworkshop.egg-info/top_level.txt

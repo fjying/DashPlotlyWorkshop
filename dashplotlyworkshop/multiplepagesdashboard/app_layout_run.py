@@ -2,8 +2,8 @@ import dash_bootstrap_components as dbc
 
 from dash import dcc, html, Input, Output
 
-from multiplepagesdashboard.app_define import app
-from styles.styles import CONTENT_STYLE, SIDEBAR_STYLE
+from ..multiplepagesdashboard.app_define import app
+from ..styles.styles import CONTENT_STYLE, SIDEBAR_STYLE
 from pages.homepage import html_div_home_page
 from pages.riskallocation import html_div_risk_allocation
 

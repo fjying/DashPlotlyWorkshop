@@ -1,0 +1,8 @@
+Metadata-Version: 2.1
+Name: dashplotlyworkshop
+Version: 1.0.0
+Summary: introduction to interactive data visualization using Plotly and Dash
+Author: Junying (Alice) Fang
+Author-email: jf3375@princeton.edu
+Requires-Python: >=3.8,<3.12
+License-File: LICENSE
