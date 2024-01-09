@@ -4,9 +4,9 @@ using Plotly and Dash in Python. Without the need to delve into more complex pro
 
 
 ## Install Packages to Run Workshop Codes #
-Change directory to the repo folder
+Change directory to the folder of the repo named ***DashPlotlyWorkshop***
 ```
-cd <repo_folder_path>
+cd <.../DashPlotlyWorkshop>
 ```
 
 
@@ -15,9 +15,14 @@ Create Conda Environment with Python 3.8 and all the Required Packages
 conda env create -f environment.yml 
 ```
 
-Activate Conda Environment
+Activate Conda Environment named ***dashplotlyworkshop***
 ```
 conda activate dashplotlyworkshop
+```
+
+Install Package named ***dashplotlyworkshop***
+```
+pip install -e .
 ```
 
 ## License
