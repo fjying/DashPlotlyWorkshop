@@ -8,13 +8,11 @@ import dash_bootstrap_components as dbc
 import warnings
 warnings.simplefilter(action='ignore', category=FutureWarning)
 
-from styles.styles import colors, TITLE_STYLE, DROPDOWN_STYLE, CONTENT_STYLE
-from multiplepagesdashboard.app_define import app
+from dashplotlyworkshop.styles.styles import colors, TITLE_STYLE, DROPDOWN_STYLE, CONTENT_STYLE
+from dashplotlyworkshop.multiplepagesdashboard.app_define import app
 
 # Change directory to workshop folder path
-workshop_folder_path = '/Users/jf3375/PycharmProjects/Dash_Plotly_Workshop'
-os.chdir(os.path.join(workshop_folder_path, 'data'))
-
+data_folder_path = os.path.join(os.path.dirname(os.getcwd()), 'data')
 
 # Import and Process Data
 def process_date_column(df, date_column='index'):
@@ -23,7 +21,7 @@ def process_date_column(df, date_column='index'):
     df = df.rename(columns={'index': 'time'})
     return df
 
-type_allocs_rts = process_date_column(pd.read_csv('daily_type-allocs_rts_type_allocs.csv'))
+type_allocs_rts = process_date_column(pd.read_csv(os.path.join(data_folder_path, 'daily_type-allocs_rts_type_allocs.csv')))
 date_values_rts = pd.date_range(start='2020-01-01', end='2020-12-29')
 date_values_rts = [str(i)[:10] for i in date_values_rts]
 

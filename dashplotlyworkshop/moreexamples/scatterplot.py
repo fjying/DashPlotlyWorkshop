@@ -5,9 +5,8 @@ import pandas as pd
 import os
 
 
-workshop_folder_path = '/Users/jf3375/PycharmProjects/Dash_Plotly_Workshop'
-os.chdir(os.path.join(workshop_folder_path, 'data'))
-df =pd.read_csv('gapminderDataFiveYear.csv')
+data_folder_path = os.path.join(os.path.dirname(os.getcwd()), 'data')
+df =pd.read_csv(os.path.join(data_folder_path, 'gapminderDataFiveYear.csv'))
 
 app = Dash(external_stylesheets=[dbc.themes.DARKLY])
 

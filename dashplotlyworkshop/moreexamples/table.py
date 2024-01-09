@@ -2,9 +2,8 @@ from dash import Dash, html
 import pandas as pd
 import os
 
-workshop_folder_path = '/Users/jf3375/PycharmProjects/Dash_Plotly_Workshop'
-os.chdir(os.path.join(workshop_folder_path, 'data'))
-df =pd.read_csv('gapminderDataFiveYear.csv')
+data_folder_path = os.path.join(os.path.dirname(os.getcwd()), 'data')
+df =pd.read_csv(os.path.join(data_folder_path, 'gapminderDataFiveYear.csv'))
 
 def generate_table(dataframe, max_rows=10):
     return html.Table([
@@ -13,7 +12,7 @@ def generate_table(dataframe, max_rows=10):
         ),
         html.Tbody([
             html.Tr([
-                html.Td(dataframe.iloc[i, col]) for col in dataframe.columns
+                html.Td(dataframe.iloc[i][col]) for col in dataframe.columns
             ]) for i in range(min(len(dataframe), max_rows))
         ])
     ])
