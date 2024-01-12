@@ -17,7 +17,7 @@ sidebar = html.Div(
                 dbc.NavLink("Risk Allocation", href="/riskallocation", active="exact")
             ],
             vertical=True,
-            pills=True, # Allow the active higlight bar
+            pills=True, # Allow the active highlight bar
         ),
     ],
     style=SIDEBAR_STYLE
@@ -47,6 +47,6 @@ def render_page_content(pathname):
 
 
 if __name__ == "__main__":
-    app.run_server(port=8051, debug=True)
+    app.run_server(port=8051, debug=False)
 
 

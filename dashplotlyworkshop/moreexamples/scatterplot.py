@@ -11,6 +11,9 @@ df =pd.read_csv(os.path.join(data_folder_path, 'gapminderDataFiveYear.csv'))
 app = Dash(external_stylesheets=[dbc.themes.DARKLY])
 
 app.layout = html.Div([
+    html.H4(
+        children='Relationships between the GDP per Capita Growth, Population, Country Continent and Life Expectancy across Time'),
+    html.Wbr(),
     dcc.Graph(id='graph-with-slider'),
     dcc.Slider(
         df['year'].min(),
@@ -37,4 +40,4 @@ def update_figure(selected_year):
     return fig
 
 if __name__ == '__main__':
-    app.run(port=8053, debug = False)
+    app.run(port=8053, debug = True)

@@ -8,7 +8,7 @@ import dash_bootstrap_components as dbc
 import warnings
 warnings.simplefilter(action='ignore', category=FutureWarning)
 
-from dashplotlyworkshop.styles.styles import colors, TITLE_STYLE, DROPDOWN_STYLE, CONTENT_STYLE
+from dashplotlyworkshop.styles.styles import colors, TITLE_STYLE, DROPDOWN_STYLE
 
 # Change directory to local workshop folder path
 data_folder_path = os.path.join(os.path.dirname(os.getcwd()), 'data')

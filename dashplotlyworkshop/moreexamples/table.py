@@ -21,7 +21,7 @@ def generate_table(dataframe, max_rows=10):
 app = Dash(__name__)
 
 app.layout = html.Div([
-    html.H4(children='GapMinderData'),
+    html.H3(children='Visualize Panel Data of GapMinderData'),
     generate_table(df, max_rows = df.shape[0])
 ])
 
