@@ -7,7 +7,7 @@ from dashplotlyworkshop.styles.styles import CONTENT_STYLE, SIDEBAR_STYLE
 from pages.homepage import html_div_home_page
 from pages.riskallocation import html_div_risk_allocation
 
-sidebar = html.Div(
+sidebar = html.Div(children=
     [
         html.H2("DASH"),
         html.Hr(),
@@ -25,7 +25,7 @@ sidebar = html.Div(
 
 content = html.Div(id="page-content", style=CONTENT_STYLE)
 
-app.layout = html.Div([dcc.Location(id="url"), sidebar, content])
+app.layout = html.Div(children=[dcc.Location(id="url"), sidebar, content])
 
 @app.callback(
     Output("page-content", "children"),
@@ -45,8 +45,7 @@ def render_page_content(pathname):
         className="p-3 bg-light rounded-3",
     )
 
-
 if __name__ == "__main__":
-    app.run_server(port=8051, debug=False)
+    app.run_server(host = '127.0.0.1', port=8051, debug=False)
 
 

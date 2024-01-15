@@ -33,7 +33,7 @@ app.title = 'singlepagedashboard'
 app.layout = html.Div(children=[
 
     dbc.Row(
-        dbc.Col(html.H3(children='Reliability Cost Index Visualization',
+        dbc.Col(html.H1(children='Reliability Cost Index Visualization',
                         style=TITLE_STYLE))
     ),
 
@@ -42,7 +42,7 @@ app.layout = html.Div(children=[
             html.Label('Select Day'),
             dcc.Dropdown(date_values_rts,
                          id='date_values_rts',
-                         value=date_values_rts[0],
+                         value=date_values_rts[1],
                          style=DROPDOWN_STYLE)
         ])
     ),
@@ -93,4 +93,4 @@ def plot_fig_type_allocs_of_day(day):
 
 
 if __name__ == '__main__':
-    app.run(debug=True, port=8050)
+    app.run(debug=True, host = '127.0.0.1', port=8060)
